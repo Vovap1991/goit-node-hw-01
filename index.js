@@ -24,7 +24,7 @@ async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case "list":
       const contacts = await listContacts();
-      return console.log(contacts);
+      return console.table(contacts);
       break;
 
     case "get":
@@ -38,7 +38,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      const removedContact = removeContact(id);
+      const removedContact = await removeContact(id);
       return console.log(removedContact);
       break;
 
@@ -46,3 +46,5 @@ async function invokeAction({ action, id, name, email, phone }) {
       console.warn("\x1B[31m Unknown action type!");
   }
 }
+
+invokeAction(options);

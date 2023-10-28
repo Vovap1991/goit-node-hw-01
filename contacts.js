@@ -36,17 +36,17 @@ async function removeContact(contactId) {
 
   const contactToRemove = contacts.find((contact) => contact.id === contactId);
 
-  if (!contactToRemove) {
-    throw new Error("Contact not found");
-  }
-
   const updatedContacts = contacts.filter(
     (contact) => contact.id !== contactId
   );
 
   await writeContacts(updatedContacts);
 
-  return contactToRemove;
+  if (!contactToRemove) {
+    return null;
+  } else {
+    return contactToRemove;
+  }
 }
 
 async function addContact(name, email, phone) {
