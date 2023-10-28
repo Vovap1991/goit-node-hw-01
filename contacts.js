@@ -65,3 +65,10 @@ async function addContact(name, email, phone) {
 
   return contactToAdd;
 }
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
